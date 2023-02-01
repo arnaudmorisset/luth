@@ -6,4 +6,9 @@ set -o pipefail
 
 if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 
-cat ./sources
+readarray -t sources <<< "$(cat ./sources)"
+
+for source in "${sources[@]}"
+do
+  echo "$source"
+done
