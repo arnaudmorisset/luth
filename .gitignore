@@ -1,2 +1,5 @@
 # Ignore program outputs (audio files)
 out
+
+# Ignore program logs
+logs.txt
