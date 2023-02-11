@@ -1,6 +1,6 @@
 # Luth 🪕
 
-Luth a bash script for downloading musics from YouTube videos and push them on a AWS S3 bucket.
+Luth is a bash script for downloading musics from YouTube and push them on a AWS S3 bucket.
 
 ## Installation
 
@@ -10,7 +10,7 @@ Luth a bash script for downloading musics from YouTube videos and push them on a
 # Install both dependencies.
 brew install youtube-dl awscli
 
-# Configure your aws command line, refer to AWS documentation for troubleshooting.
+# Configure your AWS CLI, refer to AWS documentation for troubleshooting.
 # https://docs.aws.amazon.com/cli/index.html
 aws configure
 
@@ -24,7 +24,7 @@ export LUTH_S3_BUCKET="yourbucketname"
 # Install both dependencies.
 apt install youtube-dl awscli
 
-# Configure your aws command line, refer to AWS documentation for troubleshooting.
+# Configure your AWS CLI, refer to AWS documentation for troubleshooting.
 # https://docs.aws.amazon.com/cli/index.html
 aws configure
 
@@ -34,12 +34,15 @@ export LUTH_S3_BUCKET="yourbucketname"
 
 ## Usage
 
-Fill the `sources` files with all the sounds you want to download from YouTube with a relevant title.
+Fill the `sources` files with all the sounds you want to download from YouTube, with a relevant title.
+
+Here's the format: `[title];[url]`
 
 E.g.:
 
 ```text
 MyAwesomeSound;https://youtu.be/dDDQqK7txvE
+AnotherOne;https://youtu.be/dDDQqK7txvE
 ```
 
 Then, run the script from the source folder:
@@ -47,10 +50,10 @@ Then, run the script from the source folder:
 ```bash
 ./run.sh
 
-# Can be run with TRACE activated for verbose output. Useful for debugging.
+# Can be ran with TRACE activated for verbose output. Useful for debugging.
 TRACE=1 ./run.sh
 ```
 
 The script will download each songs asynchronously and push them to S3.
-Due to this async nature, no logs will be send to stdout.
+Due to this async nature, no logs will be send to _stdout_.
 Everything is redirected to `logs.txt`.
