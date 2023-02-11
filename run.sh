@@ -6,6 +6,18 @@ set -o pipefail
 
 if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 
+if [[ ! -x  "$(command -v youtube-dl)" ]]
+then
+  echo "A dependency is missing: youtube-dl"
+  exit 1
+fi;
+
+if [[ ! -x  "$(command -v aws)" ]]
+then
+  echo "A dependency is missing: awscli"
+  exit 1
+fi;
+
 s3_bucket=${LUTH_S3_BUCKET:-}
 if [[ -z ${s3_bucket} ]];
 then
