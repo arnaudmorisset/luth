@@ -6,14 +6,11 @@ set -o pipefail
 
 if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 
-readarray -t sources <<< "$(cat ./sources)"
-
 [ ! -d "./out" ] && mkdir ./out
 
-for source in "${sources[@]}"
-do
+while read -r src ; do
   (cd ./out && \
-  IFS=';' read -ra src <<< "$source" && \
+  IFS=';' read -ra src <<< "$src" && \
   echo "Downloading ${src[0]} from YouTube..." && \
   youtube-dl -x --audio-format wav "${src[1]}")
-done
+done < ./sources
