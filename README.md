@@ -1,6 +1,6 @@
 # Luth 🪕
 
-Luth is a bash script for downloading musics from YouTube and push them on a AWS S3 bucket.
+Luth is a bash script for downloading musics from YouTube and pushing them on a AWS S3 bucket.
 
 ## Installation
 
